@@ -1,0 +1,19 @@
+{
+  "name": "projectdocumentation",
+  "version": "1.0.0",
+  "description": "Helper to create a documentation folder template for a project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimyandres/ProjectDocumentation.git"
+  },
+  "author": "Jimy Andres",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimyandres/ProjectDocumentation/issues"
+  },
+  "homepage": "https://github.com/jimyandres/ProjectDocumentation#readme"
+}
