@@ -17,9 +17,9 @@ const project = {
   lastDev: args.last_developer,
   location: args.location,
   netoffice: args.netoffice_number,
-  folder: config.docsFolder,
-  clarificationDoc: config.clarificationDoc,
-  deliveryDoc: config.deliveryDoc,
+  folder: args.documentation_root,
+  clarificationDoc: args.clarification_doc,
+  deliveryDoc: args.delivery_doc,
 };
 
 const requiredArgList = [
@@ -54,19 +54,27 @@ const copyDocument = (doc,projectPath,netoffice) => {
   const extFile = path.extname(doc);
   const newFileName = `${fileName} - Proyecto ${netoffice}.${extFile}`;
   fs.createReadStream(doc).pipe(fs.createWriteStream(path.join(projectPath,newFileName)));
+  console.log("'"+fileName+"'  created.");
 };
 
-// Create the Readme file content
-// const readmeInfo = (p) => {
-//   return 'Cod: '+ p.code + '\r\nName: ' + p.name + '\r\nVer: ' + p.ver + '\r\nType: ' +
-//     p.type + '\r\nLast_Dev: ' + p.lastDev + '\r\nLocation: ' + p.locaton;
-// };
-
 const run = () => {
+  // Check for missing args
   requiredArgList.map(i => requiredArg(i.arg, i.message));
-  const filePath = `${project.folder}/${project.code} - ${project.name.toUpperCase()}`;
-  createProjectFolder(filePath);
-  createReadmeFile(filePath,readmeInfo(project));
+
+  // Define the folder location where all data will be stored
+  const folderPath = `${project.folder}/${project.code} - ${project.name.toUpperCase()}`;
+
+  // Create the folder
+  createProjectFolder(folderPath);
+
+  // Create the Readme file
+  createReadmeFile(folderPath,readmeInfo(project));
+
+  // Create the Clarification Doc
+  copyDocument(project.clarificationDoc, folderPath, project.netoffice);
+
+  // Create the Delivery Doc
+  copyDocument(project.deliveryDoc, folderPath, project.netoffice);
 };
 
 run();

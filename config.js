@@ -71,18 +71,35 @@ parser.addArgument(
   }
 );
 
-// Documentation folder
+// Documentation ROOT folder
 parser.addArgument(
   [ '-r', '--documentation-root'],
+  {
+    help: 'Project folder (root) where all documentation will be stored',
+    defaultValue: process.env.DOCS_FOLDER ? process.env.DOCS_FOLDER : null,
+  }
+);
+
+// Clarification doc location
+parser.addArgument(
+  [ '-C', '--clarification-doc'],
+  {
+    help: 'Clarification Doc location.',
+    defaultValue: process.env.ACTA_ACLARACION ? process.env.ACTA_ACLARACION : null
+  }
+);
+
+// Delivery doc location
+parser.addArgument(
+  [ '-De', '--delivery-doc'],
+  {
+    help: 'Delivery doc location',
+    defaultValue: process.env.ACTA_ENTREGA ? process.env.ACTA_ENTREGA : null
+  }
 );
 
 const args = parser.parseArgs();
 
 module.exports = {
   args: args,
-  config: {
-    docsFolder: process.env.DOCS_FOLDER,
-    clarificationDoc: process.env.ACTA_ACLARACION,
-    deliveryDoc: process.env.ACTA_ENTREGA,
-  }
 };
