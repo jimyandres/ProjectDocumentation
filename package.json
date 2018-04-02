@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jimyandres/ProjectDocumentation#readme",
   "dependencies": {
-    "argparse": "^1.0.10"
+    "argparse": "^1.0.10",
+    "dotenv": "^5.0.1"
   }
 }
