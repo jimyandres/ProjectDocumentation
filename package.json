@@ -1,6 +1,6 @@
 {
   "name": "projectdocumentation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Helper to create a documentation folder template for a project",
   "main": "index.js",
   "scripts": {
