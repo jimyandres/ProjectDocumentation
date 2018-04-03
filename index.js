@@ -21,8 +21,8 @@ let project = {
 
 const client = new Client(
   {
-    host: config.host,
-    port: config.port,
+    host: args.database,
+    port: args.port,
     database: config.database,
     user: config.user,
     password: config.password,
@@ -40,7 +40,7 @@ const requiredArgList = [
 const checkError = (err) => {
   err
   ? console.error(err)
-  : console.log("Readme File Created");
+  : console.log("Readme File Created.");
 };
 
 // Create Project Folder
@@ -77,6 +77,9 @@ const fetchProjectData = (project) => (resolve) => {
     if (err) {
       console.log(err.stack);
       return client.end();
+    } else if (res.rows[0] === undefined) {
+      console.log(`The project with code ${project.code} was not found! Try again.`);
+      return client.end();
     }
 
     project = {
@@ -88,7 +91,7 @@ const fetchProjectData = (project) => (resolve) => {
     }
 
     console.log("Project Info fetched.");
-    console.dir(res.rows[0]);
+    // console.dir(res.rows[0]);
     client.end();
     resolve(project);
   });
@@ -104,7 +107,6 @@ const run = () => {
   });
 
   projectInfoPromise.then((project)=> {
-    console.log(project);
     // Define the folder location where all data will be stored
     const folderPath = `${project.folder}/${project.code} - ${project.name.toUpperCase()}`
 

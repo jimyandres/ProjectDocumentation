@@ -62,13 +62,29 @@ parser.addArgument(
   }
 );
 
+// Database to fetch the project info
+parser.addArgument(
+  [ '-d', '--database' ],
+  {
+    help: 'Database host address',
+    defaultValue: process.env.DB_HOST ? process.env.DB_HOST : null
+  }
+);
+
+// Database port
+parser.addArgument(
+  [ '-p', '--port' ],
+  {
+    help: 'Database port',
+    defaultValue: process.env.DB_PORT ? process.env.DB_PORT : null
+  }
+);
+
 const args = parser.parseArgs();
 
 module.exports = {
   args: args,
   config: {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
     database: process.env.DB_DATABASE,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
