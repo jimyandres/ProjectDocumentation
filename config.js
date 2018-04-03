@@ -1,8 +1,9 @@
 const ArgumentParser = require('argparse').ArgumentParser;
 require('dotenv').config();
+const version = require('./package.json').version;
 
 const parser = new ArgumentParser({
-  version: '1.0.0',
+  version: version,
   addHelp: true,
   description: 'Sript to create a project documentation folder with the relevant info'
 });
