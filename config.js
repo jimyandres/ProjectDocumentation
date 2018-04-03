@@ -17,49 +17,12 @@ parser.addArgument(
   }
 );
 
-// Project Name
-parser.addArgument(
-  [ '-n', '--name' ],
-  {
-    help: 'Project Name',
-    required: true,
-  }
-);
-
 // Netoffice project ID
 parser.addArgument(
-  [ '-nn', '--netoffice-number' ],
+  [ '-n', '--netoffice-number' ],
   {
     help: 'The number of the respective Netoffice project',
     required: true
-  }
-);
-
-// Project version
-parser.addArgument(
-  [ '-pv', '--project-version' ],
-  {
-    help: 'Project Version',
-    defaultValue: '1.0.0.0 (default)'
-  }
-);
-
-// Project Type (Desktop or Web)
-parser.addArgument(
-  [ '-t', '--type' ],
-  {
-    help: 'The type of the App (Desktop/Web)',
-    required: true,
-    choices: ['D', 'W']
-  }
-);
-
-// Latest Developer
-parser.addArgument(
-  [ '-D', '--last-developer' ],
-  {
-    help: 'The latest Developer of this project',
-    defaultValue: 'Not Asigned'
   }
 );
 
@@ -92,7 +55,7 @@ parser.addArgument(
 
 // Delivery doc location
 parser.addArgument(
-  [ '-De', '--delivery-doc'],
+  [ '-D', '--delivery-doc'],
   {
     help: 'Delivery doc location',
     defaultValue: process.env.ACTA_ENTREGA ? process.env.ACTA_ENTREGA : null
